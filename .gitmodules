@@ -1,0 +1,12 @@
+[submodule "resource-references"]
+	path = resource-references
+	url = git@github.com:drewag/resource-references.git
+[submodule "external/resource-references"]
+	path = external/resource-references
+	url = git@github.com:drewag/resource-references.git
+[submodule "external/sqlite"]
+	path = external/sqlite
+	url = git@github.com:stephencelis/SQLite.swift.git
+[submodule "external/swift-plus-plus"]
+	path = external/swift-plus-plus
+	url = git@github.com:drewag/SwiftPlusPlus.git

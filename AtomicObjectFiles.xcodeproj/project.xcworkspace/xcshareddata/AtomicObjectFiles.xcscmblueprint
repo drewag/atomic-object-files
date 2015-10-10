@@ -1,0 +1,36 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B3805FE88927DB5163443B5D82F7A36C5BF22B39" : 0,
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : 0,
+    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "79566793-1739-4B0B-B11F-03A5923F1483",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B3805FE88927DB5163443B5D82F7A36C5BF22B39" : "AtomicObjectFiles\/external\/resource-references\/",
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : "AtomicObjectFiles\/external\/sqlite\/Vendor\/sqlcipher\/",
+    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : "AtomicObjectFiles\/external\/sqlite\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AtomicObjectFiles",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AtomicObjectFiles.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:stephencelis\/SQLite.swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sqlcipher\/sqlcipher.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/resource-references.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B3805FE88927DB5163443B5D82F7A36C5BF22B39"
+    }
+  ]
+}
