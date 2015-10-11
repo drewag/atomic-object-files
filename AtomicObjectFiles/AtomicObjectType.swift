@@ -58,6 +58,15 @@ extension AtomicObjectType {
         self.uniqueId = actualId
     }
 
+    public mutating func removeFromPath(path: ResourceReferenceType) throws {
+        if let id = self.uniqueId {
+            let connection = try Connection(path.fullPath())
+            let updates = Table("updates")
+            let objectId = Self.objectId
+            try connection.run(updates.filter(objectId == id).delete())
+        }
+    }
+
     public static func loadFromPath(path: ReferenceType) throws -> [Self] {
         let connection = try Connection(path.fullPath())
         let updates = Table("updates")

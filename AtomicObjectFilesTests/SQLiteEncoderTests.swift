@@ -10,7 +10,9 @@ import XCTest
 import AtomicObjectFiles
 
 class SQLiteEncoderTests: XCTestCase {
-    let testFilePath = FileManager.defaultManager.documentsDirectory.append("testFile.sqlite")
+    var testFilePath: ReferenceType {
+        return FileManager.defaultManager.documentsDirectory.append("testFile.sqlite")
+    }
 
     override func setUp() {
         let _ = try? self.testFilePath.delete()
@@ -144,5 +146,86 @@ class SQLiteEncoderTests: XCTestCase {
         XCTAssertNil(retrievedInstances[0].optionalDoubleNumber)
         XCTAssertEqual(retrievedInstances[0].optionalFloatNumber, 5.0)
         XCTAssertNil(retrievedInstances[0].optionalBlob)
+    }
+
+    func testRemoveWithSingle() {
+        var instance = TestAtomicType(text: "Hello World")
+        try! instance.commitToPath(self.testFilePath)
+        try! instance.removeFromPath(self.testFilePath as! ResourceReferenceType)
+
+        let retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 0)
+    }
+
+    func testRemoveWithMultiple() {
+        var instance1 = TestAtomicType(text: "Hello World")
+        var instance2 = TestAtomicType(text: "Hello World 2")
+        var instance3 = TestAtomicType(text: "Hello World 3")
+
+        try! instance1.commitToPath(self.testFilePath)
+        try! instance2.commitToPath(self.testFilePath)
+        try! instance3.commitToPath(self.testFilePath)
+
+        try! instance1.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        var retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 2)
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == instance3.text})
+
+        try! instance3.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 1)
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+
+        try! instance2.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 0)
+    }
+
+    func testRemoveAfterUpdate() {
+        var instance = TestAtomicType(text: "Hello World")
+        try! instance.commitToPath(self.testFilePath)
+        instance.text = "Hello Changed"
+        try! instance.commitToPath(self.testFilePath)
+        try! instance.removeFromPath(self.testFilePath as! ResourceReferenceType)
+
+        let retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 0)
+
+    }
+
+    func testRemoveAfterMultipleCreateAndUpdate() {
+        var instance1 = TestAtomicType(text: "Hello World")
+        try! instance1.commitToPath(self.testFilePath)
+
+        var instance2 = TestAtomicType(text: "Hello World 2")
+        try! instance2.commitToPath(self.testFilePath)
+
+        var instance3 = TestAtomicType(text: "Hello World 3")
+        try! instance3.commitToPath(self.testFilePath)
+
+        instance1.text = "Hello Changed"
+        try! instance1.commitToPath(self.testFilePath)
+
+        instance2.text = "Hello Changed 2"
+        try! instance2.commitToPath(self.testFilePath)
+
+        instance3.text = "Hello Changed 3"
+        try! instance3.commitToPath(self.testFilePath)
+
+        try! instance1.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        var retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 2)
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == instance3.text})
+
+        try! instance3.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 1)
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+
+        try! instance2.removeFromPath(self.testFilePath as! ResourceReferenceType)
+        retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 0)
     }
 }
