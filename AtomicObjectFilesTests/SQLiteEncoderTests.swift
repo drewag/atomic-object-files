@@ -9,25 +9,6 @@
 import XCTest
 import AtomicObjectFiles
 
-struct TestAtomicType: AtomicObjectType {
-    var uniqueId: Int64?
-
-    struct Text: CoderKeyType { typealias ValueType = String }
-    let text: String
-
-    init(decoder: DecoderType) {
-        self.init(text: decoder.decode(Text.self))
-    }
-
-    init(text: String) {
-        self.text = text
-    }
-
-    func encode(encoder: Encoder) {
-        encoder.encode(self.text, forKey: Text.self)
-    }
-}
-
 class SQLiteEncoderTests: XCTestCase {
     let testFilePath = FileManager.defaultManager.documentsDirectory.append("testFile.sqlite")
 
@@ -82,13 +63,86 @@ class SQLiteEncoderTests: XCTestCase {
         let retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
         XCTAssertEqual(retrievedInstances.count, 3)
 
-        XCTAssertEqual(retrievedInstances[0].uniqueId, instance1.uniqueId)
-        XCTAssertEqual(retrievedInstances[0].text, instance1.text)
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance1.uniqueId && $0.text == instance1.text})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == instance3.text})
+    }
 
-        XCTAssertEqual(retrievedInstances[1].uniqueId, instance2.uniqueId)
-        XCTAssertEqual(retrievedInstances[1].text, instance2.text)
+    func testRetrievalAfterUpdate() {
+        var instance = TestAtomicType(text: "Hello World")
+        try! instance.commitToPath(self.testFilePath)
+        instance.text = "Hello Changed"
+        try! instance.commitToPath(self.testFilePath)
 
-        XCTAssertEqual(retrievedInstances[2].uniqueId, instance3.uniqueId)
-        XCTAssertEqual(retrievedInstances[2].text, instance3.text)
+        var retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 1)
+        XCTAssertEqual(retrievedInstances[0].text, "Hello Changed")
+
+        instance.text = "This is new text"
+        try! instance.commitToPath(self.testFilePath)
+
+        retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 1)
+        XCTAssertEqual(retrievedInstances[0].text, "This is new text")
+    }
+
+    func testRetrievalAfterMultipleCreateAndUpdate() {
+        var instance1 = TestAtomicType(text: "Hello World")
+        try! instance1.commitToPath(self.testFilePath)
+
+        var instance2 = TestAtomicType(text: "Hello World 2")
+        try! instance2.commitToPath(self.testFilePath)
+
+        var instance3 = TestAtomicType(text: "Hello World 3")
+        try! instance3.commitToPath(self.testFilePath)
+
+        instance1.text = "Hello Changed"
+        try! instance1.commitToPath(self.testFilePath)
+
+        instance2.text = "Hello Changed 2"
+        try! instance2.commitToPath(self.testFilePath)
+
+        instance3.text = "Hello Changed 3"
+        try! instance3.commitToPath(self.testFilePath)
+
+        let retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 3)
+
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance1.uniqueId && $0.text == "Hello Changed"})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == "Hello Changed 2"})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == "Hello Changed 3"})
+    }
+
+    func testVariousDataTypes() {
+        var instance = MultipleTypesAtomicType(
+            text: "Hello World",
+            truth: true,
+            integer: 1,
+            doubleNumber: 2.0,
+            floatNumber: 3.0,
+            blob: "Hello World".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!,
+            optionalText: nil,
+            optionalTruth: false,
+            optionalInteger: 4,
+            optionalDoubleNumber: nil,
+            optionalFloatNumber: 5.0,
+            optionalBlob: nil
+        )
+        try! instance.commitToPath(self.testFilePath)
+
+        let retrievedInstances = try! MultipleTypesAtomicType.loadFromPath(self.testFilePath)
+        XCTAssertEqual(retrievedInstances.count, 1)
+        XCTAssertEqual(retrievedInstances[0].text, "Hello World")
+        XCTAssertTrue(retrievedInstances[0].truth)
+        XCTAssertEqual(retrievedInstances[0].integer, 1)
+        XCTAssertEqual(retrievedInstances[0].doubleNumber, 2.0)
+        XCTAssertEqual(retrievedInstances[0].floatNumber, 3.0)
+        XCTAssertEqual(NSString(data: retrievedInstances[0].blob, encoding: NSUTF8StringEncoding), "Hello World")
+        XCTAssertNil(retrievedInstances[0].optionalText)
+        XCTAssertFalse(retrievedInstances[0].optionalTruth ?? true)
+        XCTAssertEqual(retrievedInstances[0].optionalInteger, 4)
+        XCTAssertNil(retrievedInstances[0].optionalDoubleNumber)
+        XCTAssertEqual(retrievedInstances[0].optionalFloatNumber, 5.0)
+        XCTAssertNil(retrievedInstances[0].optionalBlob)
     }
 }

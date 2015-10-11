@@ -10,4 +10,5 @@ import Foundation
 
 public protocol DecoderType {
     func decode<K: CoderKeyType>(key: K.Type) -> K.ValueType
+    func decode<K: OptionalCoderKeyType>(key: K.Type) -> K.ValueType?
 }

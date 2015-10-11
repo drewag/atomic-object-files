@@ -10,4 +10,5 @@ import Foundation
 
 public protocol Encoder {
     func encode<K: CoderKeyType>(data: K.ValueType, forKey key: K.Type)
+    func encode<K: OptionalCoderKeyType>(data: K.ValueType?, forKey key: K.Type)
 }

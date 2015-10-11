@@ -26,6 +26,62 @@ final class SQLiteEncoder: Encoder {
                 let expression = Expression<String>(key.toString())
                 self.tableBuilder.column(expression)
                 self.setters.append(expression <- v)
+            case let v as Bool:
+                let expression = Expression<Bool>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Int:
+                let expression = Expression<Int>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Double:
+                let expression = Expression<Double>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Float:
+                let expression = Expression<Double>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- Double(v))
+            case let v as NSData:
+                let expression = Expression<NSData>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            default:
+                fatalError("Type cannot be encoded to SQLite")
+        }
+    }
+
+    func encode<K: OptionalCoderKeyType>(data: K.ValueType?, forKey key: K.Type) {
+        switch data {
+            case let v as String?:
+                let expression = Expression<String?>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Bool?:
+                let expression = Expression<Bool?>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Int?:
+                let expression = Expression<Int?>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Double?:
+                let expression = Expression<Double?>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
+            case let v as Float?:
+                let expression = Expression<Double?>(key.toString())
+                self.tableBuilder.column(expression)
+                if let v = v {
+                    self.setters.append(expression <- Double(v))
+                }
+                else {
+                    self.setters.append(expression <- nil)
+                }
+            case let v as NSData?:
+                let expression = Expression<NSData?>(key.toString())
+                self.tableBuilder.column(expression)
+                self.setters.append(expression <- v)
             default:
                 fatalError("Type cannot be encoded to SQLite")
         }

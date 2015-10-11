@@ -35,23 +35,27 @@ extension AtomicObjectType {
         }
         try connection.run(create)
 
-        var setters: [Setter] = []
+        var setters = encoder.setters
+        let actualId: Int64
         setters.append(time <- NSDate().asSQLiteDateTimeString)
         if let id = self.uniqueId {
-            setters.append(objectId <- id)
+            actualId = id
         }
         else {
             if connection.scalar(updates.count) == 0 {
                 setters.append(objectId <- 1)
+                actualId = 1
             }
             else {
                 let id = connection.scalar(updates.order(objectId.desc).limit(1).select(objectId))
-                setters.append(objectId <- (id + 1))
+                actualId = id + 1
             }
-            setters += encoder.setters
         }
+        setters.append(objectId <- actualId)
+
         let insert = updates.insert(setters)
-        self.uniqueId = try connection.run(insert)
+        try connection.run(insert)
+        self.uniqueId = actualId
     }
 
     public static func loadFromPath(path: ReferenceType) throws -> [Self] {
@@ -60,13 +64,14 @@ extension AtomicObjectType {
 
         let objectId = Self.objectId
 
-        var instances = [Self]()
+        var instances = [Int64:Self]()
         for row in connection.prepare(updates) {
             let decoder = SQLiteDecoder(row: row)
             var instance = Self(decoder: decoder)
-            instance.uniqueId = row.get(objectId)
-            instances.append(instance)
+            let uniqueId = row.get(objectId)
+            instance.uniqueId = uniqueId
+            instances[uniqueId] = instance
         }
-        return instances
+        return Array(instances.values)
     }
 }
