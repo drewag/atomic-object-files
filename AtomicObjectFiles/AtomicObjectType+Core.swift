@@ -10,8 +10,6 @@ import Foundation
 import SQLite
 
 extension AtomicObjectType {
-    public typealias Marker = Int64?
-
     static var time: Expression<String> { return Expression<String>("time") }
     static var updateId: Expression<Int64> { return Expression<Int64>("updateId") }
     static var objectId: Expression<Int64> { return Expression<Int64>("id") }
@@ -22,7 +20,7 @@ extension AtomicObjectType {
         try Self().prepareAtPath(path, encoder: &encoder)
     }
 
-    public static func generateMarkerFromPath(path: ReferenceType) throws -> Marker {
+    public static func generateMarkerFromPath(path: ReferenceType) throws -> Int64? {
         try self.prepareAtPath(path)
 
         let connection = try Connection(path.fullPath())
@@ -65,15 +63,17 @@ extension AtomicObjectType {
         }
     }
 
-    public static func loadFromPath(path: ReferenceType, afterMarker: Marker = nil) throws -> [Self] {
+    public static func loadFromPath(path: ReferenceType, afterMarker: Int64? = nil) throws -> [Self] {
+        try self.prepareAtPath(path)
+
         let connection = try Connection(path.fullPath())
 
-        var updatesTable = self.updatesTable
+        var updatesTable = self.updatesTable.order(self.updateId)
         if let marker = afterMarker {
             updatesTable = updatesTable.filter(self.updateId > marker)
         }
 
-        var instances = [Int64:Self]()
+        var instances = OrderedDictionary<Int64, AtomicObjectType>()
         for row in connection.prepare(updatesTable) {
             let decoder = SQLiteDecoder(row: row)
             var instance = Self(decoder: decoder)
@@ -81,7 +81,7 @@ extension AtomicObjectType {
             instance.uniqueId = uniqueId
             instances[uniqueId] = instance
         }
-        return Array(instances.values)
+        return instances.values.map {$0 as! Self}
     }
 }
 
