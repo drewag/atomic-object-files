@@ -48,6 +48,23 @@ struct MultipleTypesAtomicType: AtomicObjectType {
     struct OptionalBlob: OptionalCoderKeyType { typealias ValueType = NSData }
     var optionalBlob: NSData?
 
+    init() {
+        self.init(
+            text: "",
+            truth: true,
+            integer: 0,
+            doubleNumber: 0,
+            floatNumber: 0,
+            blob: NSData(),
+            optionalText: nil,
+            optionalTruth: nil,
+            optionalInteger: nil,
+            optionalDoubleNumber: nil,
+            optionalFloatNumber: nil,
+            optionalBlob: nil
+        )
+    }
+
     init(
         text: String,
         truth: Bool,

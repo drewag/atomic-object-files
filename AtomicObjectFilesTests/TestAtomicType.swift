@@ -19,6 +19,10 @@ struct TestAtomicType: AtomicObjectType {
         self.init(text: decoder.decode(Text.self))
     }
 
+    init() {
+        self.init(text: "")
+    }
+
     init(text: String) {
         self.text = text
     }

@@ -1,26 +1,43 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "192E9049AE9AA7F4D72AEE50768F519D77C6C9D3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : 0,
+    "192E9049AE9AA7F4D72AEE50768F519D77C6C9D3" : 0,
+    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : 0,
     "B3805FE88927DB5163443B5D82F7A36C5BF22B39" : 0,
-    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : 0,
-    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : 0
+    "F38F6F9A954782DE47D982609A4F134D3E74A4E6" : 0,
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "79566793-1739-4B0B-B11F-03A5923F1483",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3D18F198FE75A63BDA0AAAA673F32100EA5C4864" : "atomic-object-files\/external\/swift-plus-plus\/",
+    "192E9049AE9AA7F4D72AEE50768F519D77C6C9D3" : "atomic-object-files\/",
+    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : "AtomicObjectFiles\/external\/sqlite\/",
     "B3805FE88927DB5163443B5D82F7A36C5BF22B39" : "AtomicObjectFiles\/external\/resource-references\/",
-    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : "AtomicObjectFiles\/external\/sqlite\/Vendor\/sqlcipher\/",
-    "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD" : "AtomicObjectFiles\/external\/sqlite\/"
+    "F38F6F9A954782DE47D982609A4F134D3E74A4E6" : "..",
+    "55011AEBD444630C0E9DF47BD2E18FDBBDCC285D" : "AtomicObjectFiles\/external\/sqlite\/Vendor\/sqlcipher\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "AtomicObjectFiles",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AtomicObjectFiles.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/atomic-object-files.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "192E9049AE9AA7F4D72AEE50768F519D77C6C9D3"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:stephencelis\/SQLite.swift.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AE8ED2E684071AF4FB151FA51BF266B82FF45BD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/SwiftPlusPlus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D18F198FE75A63BDA0AAAA673F32100EA5C4864"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sqlcipher\/sqlcipher.git",
@@ -31,6 +48,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:drewag\/resource-references.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B3805FE88927DB5163443B5D82F7A36C5BF22B39"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:chronosinteractivemedia\/speller.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F38F6F9A954782DE47D982609A4F134D3E74A4E6"
     }
   ]
 }

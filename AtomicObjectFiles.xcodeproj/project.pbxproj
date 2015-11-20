@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		49000EEF1BC8327B002EF454 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49000EE01BC831A4002EF454 /* SQLite.framework */; };
-		49000EF21BC8A59D002EF454 /* NSDate+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000EF11BC8A59D002EF454 /* NSDate+Formatting.swift */; settings = {ASSET_TAGS = (); }; };
-		49000EFF1BC8B2D6002EF454 /* SwiftPlusPlusiOSLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000EFD1BC8A685002EF454 /* SwiftPlusPlusiOSLib.swift */; settings = {ASSET_TAGS = (); }; };
-		49000F021BC8B371002EF454 /* SQLiteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F011BC8B371002EF454 /* SQLiteEncoder.swift */; settings = {ASSET_TAGS = (); }; };
-		49000F061BC8BC59002EF454 /* SQLiteEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F051BC8BC59002EF454 /* SQLiteEncoderTests.swift */; settings = {ASSET_TAGS = (); }; };
-		49000F091BC8CE25002EF454 /* SQLiteDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F081BC8CE25002EF454 /* SQLiteDecoder.swift */; settings = {ASSET_TAGS = (); }; };
-		49000F0C1BCAD5DA002EF454 /* TestAtomicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F0B1BCAD5DA002EF454 /* TestAtomicType.swift */; settings = {ASSET_TAGS = (); }; };
-		49000F0E1BCAD600002EF454 /* MultipleTypesAtomicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F0D1BCAD600002EF454 /* MultipleTypesAtomicType.swift */; settings = {ASSET_TAGS = (); }; };
+		49000EF21BC8A59D002EF454 /* NSDate+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000EF11BC8A59D002EF454 /* NSDate+Formatting.swift */; };
+		49000EFF1BC8B2D6002EF454 /* SwiftPlusPlusiOSLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000EFD1BC8A685002EF454 /* SwiftPlusPlusiOSLib.swift */; };
+		49000F021BC8B371002EF454 /* SQLiteEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F011BC8B371002EF454 /* SQLiteEncoder.swift */; };
+		49000F061BC8BC59002EF454 /* SQLiteEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F051BC8BC59002EF454 /* SQLiteEncoderTests.swift */; };
+		49000F091BC8CE25002EF454 /* SQLiteDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F081BC8CE25002EF454 /* SQLiteDecoder.swift */; };
+		49000F0C1BCAD5DA002EF454 /* TestAtomicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F0B1BCAD5DA002EF454 /* TestAtomicType.swift */; };
+		49000F0E1BCAD600002EF454 /* MultipleTypesAtomicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49000F0D1BCAD600002EF454 /* MultipleTypesAtomicType.swift */; };
+		4941FE171BFE91F300418ABA /* AtomicObjectType+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FE161BFE91F300418ABA /* AtomicObjectType+Core.swift */; };
 		49D70A171BC81DF1009C8E65 /* AtomicObjectFiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 49D70A161BC81DF1009C8E65 /* AtomicObjectFiles.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49D70A1E1BC81DF1009C8E65 /* AtomicObjectFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D70A131BC81DF1009C8E65 /* AtomicObjectFiles.framework */; settings = {ASSET_TAGS = (); }; };
-		49D70A231BC81DF1009C8E65 /* AtomicObjectFilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A221BC81DF1009C8E65 /* AtomicObjectFilesTests.swift */; };
-		49D70A321BC82061009C8E65 /* EncodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A311BC82061009C8E65 /* EncodableType.swift */; settings = {ASSET_TAGS = (); }; };
-		49D70A341BC8208C009C8E65 /* EncoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A331BC8208C009C8E65 /* EncoderType.swift */; settings = {ASSET_TAGS = (); }; };
-		49D70A361BC8209C009C8E65 /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A351BC8209C009C8E65 /* DecoderType.swift */; settings = {ASSET_TAGS = (); }; };
-		49D70A381BC8231C009C8E65 /* CoderKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A371BC8231C009C8E65 /* CoderKeyType.swift */; settings = {ASSET_TAGS = (); }; };
-		49D70A3C1BC826AD009C8E65 /* AtomicObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A3B1BC826AD009C8E65 /* AtomicObjectType.swift */; settings = {ASSET_TAGS = (); }; };
-		49D70A481BC82A65009C8E65 /* ResourceReferencesiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A471BC82A65009C8E65 /* ResourceReferencesiOS.swift */; settings = {ASSET_TAGS = (); }; };
+		49D70A1E1BC81DF1009C8E65 /* AtomicObjectFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D70A131BC81DF1009C8E65 /* AtomicObjectFiles.framework */; };
+		49D70A321BC82061009C8E65 /* EncodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A311BC82061009C8E65 /* EncodableType.swift */; };
+		49D70A341BC8208C009C8E65 /* EncoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A331BC8208C009C8E65 /* EncoderType.swift */; };
+		49D70A361BC8209C009C8E65 /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A351BC8209C009C8E65 /* DecoderType.swift */; };
+		49D70A381BC8231C009C8E65 /* CoderKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A371BC8231C009C8E65 /* CoderKeyType.swift */; };
+		49D70A3C1BC826AD009C8E65 /* AtomicObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A3B1BC826AD009C8E65 /* AtomicObjectType.swift */; };
+		49D70A481BC82A65009C8E65 /* ResourceReferencesiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D70A471BC82A65009C8E65 /* ResourceReferencesiOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,11 +129,11 @@
 		49000F081BC8CE25002EF454 /* SQLiteDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDecoder.swift; sourceTree = "<group>"; };
 		49000F0B1BCAD5DA002EF454 /* TestAtomicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAtomicType.swift; sourceTree = "<group>"; };
 		49000F0D1BCAD600002EF454 /* MultipleTypesAtomicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleTypesAtomicType.swift; sourceTree = "<group>"; };
+		4941FE161BFE91F300418ABA /* AtomicObjectType+Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AtomicObjectType+Core.swift"; sourceTree = "<group>"; };
 		49D70A131BC81DF1009C8E65 /* AtomicObjectFiles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AtomicObjectFiles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D70A161BC81DF1009C8E65 /* AtomicObjectFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomicObjectFiles.h; sourceTree = "<group>"; };
 		49D70A181BC81DF1009C8E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D70A1D1BC81DF1009C8E65 /* AtomicObjectFilesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomicObjectFilesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49D70A221BC81DF1009C8E65 /* AtomicObjectFilesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicObjectFilesTests.swift; sourceTree = "<group>"; };
 		49D70A241BC81DF1009C8E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D70A311BC82061009C8E65 /* EncodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodableType.swift; sourceTree = "<group>"; };
 		49D70A331BC8208C009C8E65 /* EncoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncoderType.swift; sourceTree = "<group>"; };
@@ -169,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				49000EF11BC8A59D002EF454 /* NSDate+Formatting.swift */,
+				4941FE161BFE91F300418ABA /* AtomicObjectType+Core.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 		49D70A211BC81DF1009C8E65 /* AtomicObjectFilesTests */ = {
 			isa = PBXGroup;
 			children = (
-				49D70A221BC81DF1009C8E65 /* AtomicObjectFilesTests.swift */,
 				49000F0A1BCAD5CF002EF454 /* Domain */,
 				49000F071BC8BC60002EF454 /* Tests */,
 				49D70A241BC81DF1009C8E65 /* Info.plist */,
@@ -527,6 +527,7 @@
 			files = (
 				49D70A341BC8208C009C8E65 /* EncoderType.swift in Sources */,
 				49D70A3C1BC826AD009C8E65 /* AtomicObjectType.swift in Sources */,
+				4941FE171BFE91F300418ABA /* AtomicObjectType+Core.swift in Sources */,
 				49D70A361BC8209C009C8E65 /* DecoderType.swift in Sources */,
 				49000EFF1BC8B2D6002EF454 /* SwiftPlusPlusiOSLib.swift in Sources */,
 				49D70A481BC82A65009C8E65 /* ResourceReferencesiOS.swift in Sources */,
@@ -545,7 +546,6 @@
 				49000F0E1BCAD600002EF454 /* MultipleTypesAtomicType.swift in Sources */,
 				49000F0C1BCAD5DA002EF454 /* TestAtomicType.swift in Sources */,
 				49000F061BC8BC59002EF454 /* SQLiteEncoderTests.swift in Sources */,
-				49D70A231BC81DF1009C8E65 /* AtomicObjectFilesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

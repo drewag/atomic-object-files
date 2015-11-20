@@ -70,6 +70,26 @@ class SQLiteEncoderTests: XCTestCase {
         XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == instance3.text})
     }
 
+    func testRetrievalWithMarkerAfterCreate() {
+        var instance1 = TestAtomicType(text: "Hello World")
+        try! instance1.commitToPath(self.testFilePath)
+
+        let marker = try! TestAtomicType.generateMarkerFromPath(self.testFilePath)
+
+        var instance2 = TestAtomicType(text: "Hello World 2")
+        try! instance2.commitToPath(self.testFilePath)
+
+        var instance3 = TestAtomicType(text: "Hello World 3")
+        try! instance3.commitToPath(self.testFilePath)
+
+
+        let retrievedInstances = try! TestAtomicType.loadFromPath(self.testFilePath, afterMarker: marker)
+        XCTAssertEqual(retrievedInstances.count, 2)
+
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance2.uniqueId && $0.text == instance2.text})
+        XCTAssertTrue(retrievedInstances.contains {$0.uniqueId == instance3.uniqueId && $0.text == instance3.text})
+    }
+
     func testRetrievalAfterUpdate() {
         var instance = TestAtomicType(text: "Hello World")
         try! instance.commitToPath(self.testFilePath)
